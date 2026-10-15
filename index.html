@@ -64,9 +64,10 @@ main { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
 .photo {
   display: block;
   width: 100%;
-  max-height: 32rem;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: left top;
   margin: 2.5rem 0 0;
   border-radius: 2px;
 }
@@ -159,13 +160,13 @@ const CONFIG = {
   date: "23 October 2026",
   place: "",                       // e.g. "Graz, Austria" (leave empty to hide)
 
-  photo: "DSC09897.png",              // image file uploaded next to index.html ("" = no photo)
+  photo: "DSC09897 (1).jpg",              // image file uploaded next to index.html ("" = no photo)
   photoAlt: "Julia and Alex",
 
   welcome: "We're getting married, and we're so grateful for every kind word from friends and colleagues.",
 
   formLink: "",                    // Google Form share link
-  formEmbed: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true" width="640" height="553" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>',                   // optional: embed URL from the form's "Embed" option
+  formEmbed: "https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true",                   // optional: embed URL from the form's "Embed" option
 
   giftText: "Your good wishes mean the most. If you'd also like to send a small gift towards our new chapter, you're welcome to do so here.",
   accountHolder: "Alexander Fuerbass",    // name shown above the IBAN
