@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We're getting married</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f2f4f1;
+  --ink: #1f2b27;
+  --muted: #55645d;
+  --sage: #4f6b5c;
+  --blush: #c98f88;
+  --line: #d3dad5;
+  --btn-bg: #1f2b27;
+  --btn-ink: #f2f4f1;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151c19;
+    --ink: #e9eee9;
+    --muted: #a3b2aa;
+    --sage: #8fb3a0;
+    --blush: #d9a49d;
+    --line: #2e3a35;
+    --btn-bg: #e9eee9;
+    --btn-ink: #151c19;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+main { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+.hero { padding: 12vh 0 0; }
+.names {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(3.4rem, 15vw, 6.5rem);
+  line-height: .95;
+  margin: 0;
+  letter-spacing: -.01em;
+}
+.names .and {
+  display: block;
+  color: var(--blush);
+  font-size: .55em;
+  margin: .1em 0 .1em .9em;
+}
+.when { margin: 2rem 0 0; color: var(--muted); }
+
+.photo {
+  display: block;
+  width: 100%;
+  max-height: 32rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin: 2.5rem 0 0;
+  border-radius: 2px;
+}
+.intro { margin: 2rem 0 0; max-width: 32rem; }
+
+section { border-top: 1px solid var(--line); padding-top: 3rem; margin-top: 3rem; }
+h2 { font-family: var(--serif); font-weight: 400; font-size: 2rem; margin: 0 0 .75rem; }
+p { margin: 0 0 1rem; max-width: 34rem; }
+.muted { color: var(--muted); }
+.small { font-size: .95rem; margin-top: 1rem; }
+
+.btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  padding: .8rem 1.4rem;
+  border-radius: 2px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn:focus-visible, iframe:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
+
+iframe { width: 100%; height: 34rem; border: 0; margin-top: 1rem; }
+
+.gift { display: grid; gap: 2.25rem; margin-top: 1.5rem; }
+.way h3 { font-size: 1rem; font-weight: 600; margin: 0 0 .4rem; }
+.iban {
+  font-size: 1.15rem;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+  margin: 0 0 .75rem;
+}
+.ok { color: var(--sage); margin-left: .75rem; font-size: .95rem; }
+.qr { width: 11rem; height: 11rem; display: block; margin-top: 1rem; background: #fff; padding: .5rem; }
+button.btn { font: inherit; cursor: pointer; }
+footer { margin-top: 4rem; color: var(--muted); font-size: .95rem; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="hero">
+    <h1 class="names" id="names"></h1>
+    <p class="when" id="when"></p>
+    <img class="photo" id="photo" alt="" hidden>
+    <p class="intro" id="welcome"></p>
+  </header>
+
+  <section id="wishes" hidden>
+    <h2>Leave us a message</h2>
+    <p class="muted">We'd love to read your good wishes. It only takes a minute.</p>
+    <a class="btn" id="formLink" href="#" target="_blank" rel="noopener">Write a message</a>
+    <iframe id="formEmbed" title="Message form" loading="lazy" hidden></iframe>
+  </section>
+
+  <section id="gift" hidden>
+    <h2>A gift, if you like</h2>
+    <p id="giftText"></p>
+    <p class="muted small">Optional and never expected.</p>
+    <div class="gift">
+      <div class="way" id="bankWay" hidden>
+        <h3>Bank transfer</h3>
+        <p class="muted" id="holder"></p>
+        <p class="iban" id="iban"></p>
+        <button class="btn ghost" id="copyBtn" type="button">Copy IBAN</button>
+        <span class="ok" id="copyOk" role="status"></span>
+        <img class="qr" id="qr" alt="QR code for the bank transfer" hidden>
+      </div>
+      <div class="way" id="paypalWay" hidden>
+        <h3>PayPal</h3>
+        <a class="btn ghost" id="paypalLink" href="#" target="_blank" rel="noopener">Give via PayPal</a>
+        <p class="muted small">Choosing “Friends &amp; Family” keeps fees away from the gift.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+</main>
+
+<script>
+/* ============================================================
+   EDIT HERE: this is the only block you need to change.
+   Leave a field empty ("") and that part of the page is hidden.
+   ============================================================ */
+const CONFIG = {
+  names: ["Julia", "Alex"],
+  date: "23 October 2026",
+  place: "",                       // e.g. "Graz, Austria" (leave empty to hide)
+
+  photo: "DSCF3860_edited.jpg",              // image file uploaded next to index.html ("" = no photo)
+  photoAlt: "Julia and Alex",
+
+  welcome: "We're getting married, and we're so grateful for every kind word from friends and colleagues.",
+
+  formLink: "",                    // Google Form share link
+  formEmbed: '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true" width="640" height="553" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>',                   // optional: embed URL from the form's "Embed" option
+
+  giftText: "Your good wishes mean the most. If you'd also like to send a small gift towards our new chapter, you're welcome to do so here.",
+  accountHolder: "Alexander Fuerbass",    // name shown above the IBAN
+  iban: "DE82100110012621235740",                        // e.g. "AT00 0000 0000 0000 0000" ("" = no bank transfer)
+  qrImage: "qr-iban.png",                     // optional: e.g. "qr.png" uploaded next to index.html
+  paypalLink: "",                  // optional: e.g. "https://paypal.me/YourName"
+
+  footer: "Thank you for being part of it."
+};
+/* ============================================================ */
+
+const $ = (id) => document.getElementById(id);
+const C = CONFIG;
+
+document.title = C.names.join(" & ") + " are getting married";
+$("names").innerHTML = C.names[0] + '<span class="and">&amp;</span>' + C.names[1];
+$("when").textContent = [C.date, C.place].filter(Boolean).join(" · ");
+$("welcome").textContent = C.welcome;
+$("footer").textContent = C.footer;
+
+if (C.photo) {
+  const img = $("photo");
+  img.alt = C.photoAlt;
+  img.onload = () => { img.hidden = false; };
+  img.onerror = () => { img.hidden = true; };
+  img.src = C.photo;
+}
+
+if (C.formLink || C.formEmbed) {
+  $("wishes").hidden = false;
+  if (C.formLink) $("formLink").href = C.formLink; else $("formLink").hidden = true;
+  if (C.formEmbed) { $("formEmbed").src = C.formEmbed; $("formEmbed").hidden = false; }
+}
+
+if (C.iban || C.paypalLink) {
+  $("gift").hidden = false;
+  $("giftText").textContent = C.giftText;
+}
+
+if (C.iban) {
+  $("bankWay").hidden = false;
+  $("holder").textContent = C.accountHolder;
+  $("iban").textContent = C.iban;
+  if (C.qrImage) { $("qr").src = C.qrImage; $("qr").hidden = false; }
+  $("copyBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(C.iban.replace(/\s/g, ""));
+      $("copyOk").textContent = "IBAN copied";
+    } catch (e) {
+      $("copyOk").textContent = "Please select and copy the IBAN manually.";
+    }
+    setTimeout(() => { $("copyOk").textContent = ""; }, 3000);
+  });
+}
+
+if (C.paypalLink) {
+  $("paypalWay").hidden = false;
+  $("paypalLink").href = C.paypalLink;
+}
+</script>
+</body>
+</html>
