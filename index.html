@@ -41,23 +41,23 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
 }
-main { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
+main { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 5rem; text-align: center; }
 
 .hero { padding: 12vh 0 0; }
 .names {
   font-family: var(--serif);
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(3.4rem, 15vw, 6.5rem);
-  line-height: .95;
+  font-size: clamp(2.6rem, 12vw, 5.2rem);
+  line-height: 1.1;
   margin: 0;
   letter-spacing: -.01em;
 }
 .names .and {
-  display: block;
+  display: inline-block;
   color: var(--blush);
-  font-size: .55em;
-  margin: .1em 0 .1em .9em;
+  font-size: .6em;
+  margin: 0 .3em;
 }
 .when { margin: 2rem 0 0; color: var(--muted); }
 
@@ -67,15 +67,15 @@ main { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
   height: auto;
   max-height: 80vh;
   object-fit: contain;
-  object-position: left top;
-  margin: 2.5rem 0 0;
+  object-position: center;
+  margin: 2.5rem auto 0;
   border-radius: 2px;
 }
-.intro { margin: 2rem 0 0; max-width: 32rem; }
+.intro { margin: 2rem auto 0; max-width: 32rem; }
 
 section { border-top: 1px solid var(--line); padding-top: 3rem; margin-top: 3rem; }
 h2 { font-family: var(--serif); font-weight: 400; font-size: 2rem; margin: 0 0 .75rem; }
-p { margin: 0 0 1rem; max-width: 34rem; }
+p { margin: 0 auto 1rem; max-width: 34rem; }
 .muted { color: var(--muted); }
 .small { font-size: .95rem; margin-top: 1rem; }
 
@@ -93,7 +93,7 @@ p { margin: 0 0 1rem; max-width: 34rem; }
 
 iframe { width: 100%; height: 34rem; border: 0; margin-top: 1rem; }
 
-.gift { display: grid; gap: 2.25rem; margin-top: 1.5rem; }
+.gift { display: grid; justify-items: center; gap: 2.25rem; margin-top: 1.5rem; }
 .way h3 { font-size: 1rem; font-weight: 600; margin: 0 0 .4rem; }
 .iban {
   font-size: 1.15rem;
@@ -103,7 +103,7 @@ iframe { width: 100%; height: 34rem; border: 0; margin-top: 1rem; }
   margin: 0 0 .75rem;
 }
 .ok { color: var(--sage); margin-left: .75rem; font-size: .95rem; }
-.qr { width: 11rem; height: 11rem; display: block; margin-top: 1rem; background: #fff; padding: .5rem; }
+.qr { width: 11rem; height: 11rem; display: block; margin: 1rem auto 0; background: #fff; padding: .5rem; }
 button.btn { font: inherit; cursor: pointer; }
 footer { margin-top: 4rem; color: var(--muted); font-size: .95rem; }
 [hidden] { display: none !important; }
@@ -166,7 +166,7 @@ const CONFIG = {
   welcome: "We're getting married, and we're so grateful for every kind word from friends and colleagues.",
 
   formLink: "",                    // Google Form share link
-  formEmbed: "https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true&hl=en",                   // optional: embed URL from the form's "Embed" option
+  formEmbed: "https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true",                   // optional: embed URL from the form's "Embed" option
 
   giftText: "Your good wishes mean the most. If you'd also like to send a small gift towards our new chapter, you're welcome to do so here.",
   accountHolder: "Alexander Fuerbass",    // name shown above the IBAN
