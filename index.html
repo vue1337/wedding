@@ -138,6 +138,7 @@ footer { margin-top: 4rem; color: var(--muted); font-size: .95rem; }
         <p class="iban" id="iban"></p>
         <button class="btn ghost" id="copyBtn" type="button">Copy IBAN</button>
         <span class="ok" id="copyOk" role="status"></span>
+        <p class="muted small" id="qrText" hidden>Or scan this QR code with your banking app to make the transfer.</p>
         <img class="qr" id="qr" alt="QR code for the bank transfer" hidden>
       </div>
       <div class="way" id="paypalWay" hidden>
@@ -216,7 +217,7 @@ if (C.iban) {
   $("bankWay").hidden = false;
   $("holder").textContent = C.accountHolder;
   $("iban").textContent = C.iban;
-  if (C.qrImage) { $("qr").src = C.qrImage; $("qr").hidden = false; }
+  if (C.qrImage) { $("qr").src = C.qrImage; $("qr").hidden = false; $("qrText").hidden = false; }
   $("copyBtn").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(C.iban.replace(/\s/g, ""));
