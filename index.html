@@ -4,7 +4,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>We're getting married</title>
+<title>We got married</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -165,7 +165,7 @@ const CONFIG = {
   photo: "DSC09897 (1).jpg",              // image file uploaded next to index.html ("" = no photo)
   photoAlt: "Julia and Alex",
 
-  welcome: "We're getting married, and we're so grateful for every kind word from friends and colleagues.",
+  welcome: "We got , and we're so grateful for every kind word from friends and colleagues.",
 
   formLink: "",                    // Google Form share link
   formEmbed: "https://docs.google.com/forms/d/e/1FAIpQLSe7ZGUvMWvili4pcm64_sPYgQa2ACinQVtPHirVOx3rrIVVgA/viewform?embedded=true",                   // optional: embed URL from the form's "Embed" option
@@ -184,7 +184,7 @@ const CONFIG = {
 const $ = (id) => document.getElementById(id);
 const C = CONFIG;
 
-document.title = C.names.join(" & ") + " are getting married";
+document.title = C.names.join(" & ") + " are getting ";
 $("names").innerHTML = C.names[0] + '<span class="and">&amp;</span>' + C.names[1];
 $("when").textContent = [C.date, C.place].filter(Boolean).join(" · ");
 $("welcome").textContent = C.welcome;
